@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Techcret : Sign Up</title>
+</head>
+
+
+
+<body>
+
+<form th:action="@{/create}" class="text-center border border-light p-5 " method="post">
+    <div class="form-group col-sm-12">
+        <!-- <label for="exampleInputEmail1">Email address</label>-->
+        <h3>
+            <h1>Add Your <span class="badge badge-info"> Detail</span></h1>
+
+        </h3>
+    </div>
+
+
+
+    <div class="form-group col-sm-12">
+         <h5>Enter Your Email </h5>
+         <input type="email" class="form-group col-sm-7"  id="authorName" name="authorName" placeholder="Email">
+     </div>
+
+
+     <div class="form-group col-sm-12">
+         <h5>Enter Your Name </h5>
+         <input type="text" class="form-group col-sm-7" id="authorEmail" name="authorEmail" placeholder="Name">
+     </div>
+
+     <div class="form-group col-sm-12">
+         <h5>Phone Number</h5>
+         <input type="text" class="form-group col-sm-7" id="authorPhone" name="authorPhone" placeholder="Phone Number">
+     </div>
+
+    <button type="submit" class="btn btn-primary " >Add</button>
+
+</form>
+</div>
+
+</body>
+</html>
