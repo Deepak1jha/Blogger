@@ -12,37 +12,38 @@ import java.util.UUID;
 public class GetUserBlog {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private LocalDateTime createdDateTime;
     private String title;
     private String description;
     private String inputMessage;
     private String uuid;
+    //private String userTableId;
+    //private Integer userId;
 
 
-
-@JoinColumn(name = "user")
-@ManyToOne
-private User user;
-
+    @JoinColumn(name = "user")
+    @ManyToOne
+    private User user;
 
 
+    public GetUserBlog() {
+    }
 
 
-
-    public GetUserBlog()
-    {}
-
-    public GetUserBlog(GetUserBlogCo getUserBlogCo)
-    {
+    public GetUserBlog(GetUserBlogCo getUserBlogCo, User user) {
 
 
-        this.title=getUserBlogCo.getTitle();
-        this.description=getUserBlogCo.getDescription();
-        this.inputMessage=getUserBlogCo.getInputMessage();
-        this.createdDateTime=LocalDateTime.now();
-        this.uuid=UUID.randomUUID().toString();
+        this.title = getUserBlogCo.getTitle();
+        this.description = getUserBlogCo.getDescription();
+        this.inputMessage = getUserBlogCo.getInputMessage();
+        this.createdDateTime = LocalDateTime.now();
+        this.uuid = UUID.randomUUID().toString();
+        // this.userTableId=getUserBlogCo.getUserTableId();
+        //this.userId=userinfo.getUserId();
+        this.user = user;
+
     }
 
     public Integer getId() {
@@ -101,15 +102,5 @@ private User user;
         this.uuid = uuid;
     }
 
-    @Override
-    public String toString() {
-        return "GetUserBlog{" +
-                "id=" + id +
-                ", createdDateTime=" + createdDateTime +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", inputMessage='" + inputMessage + '\'' +
-                ", user=" + user +
-                '}';
-    }
+
 }

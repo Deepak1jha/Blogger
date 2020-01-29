@@ -11,10 +11,10 @@
 <body>
 <div class="container ">
 
-    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
-        <a class="navbar-brand" >Blogger</a>
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary navbar-inverse">
+        <a class="navbar-brand" href="http://127.0.0.1:9020">Home</a>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item active">
                     <a class="nav-link" href="http://127.0.0.1:9020/getBlog/create">Add Blog</a>
                 </li>
@@ -26,41 +26,36 @@
         </div>
     </nav>
 
-    <h1> <b> <label>Title  : Description</label></b></h1><hr>
 
+    <tr th:each="notFound: ${notFound}">
+        <h1> User Not Found</h1>
+    </tr>
+
+    <tr th:each="enterRecord: ${enterRecord}">
+        <h1> Hi new User, Add Your First Blog </h1>
+        <a href=""> Add Your </a>
+    </tr>
 
 
     <table class="table table-responsive table-hover table-stripped table-bordered">
         <thead>
         <tr>
-            <th> Title </th>
+            <th> Title</th>
             <th> Description</th>
-            <th> User Name</th>
-            <th> Time
+            <th> Time</th>
+            <th> Message</th>
         </tr>
-
         <tbody>
-       <tr th:each="arrayList: ${arrayList}">
-
-            <td  th:text="${arrayList.getCreatedDateTime()}" />
-            <td th:text="${arrayList.getTitle()}" />
-            <td th:text="${arrayList.getDescription()}" />
-            <td th:text="${arrayList.getInputMessage()}" />
-        </tr>
-
-
-
-
-
-
-
-
-
-
-
-        </tbody>
+             <tr th:each="arrayList: ${arrayList}">
+                 <td th:text="${arrayList.getTitle()}"/>
+                 <td th:text="${arrayList.getDescription()}"/>
+                 <td th:text="${arrayList.getCreatedDateTime()}"/>
+                 <td>
+                     <a th:href="${arrayList.getCreatedDateTime()}">view</a>
+                 </td>
+             </tr>
+         </tbody>
     </table>
-
 
 
 </div>

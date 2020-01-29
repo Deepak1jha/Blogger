@@ -13,26 +13,21 @@ public class User {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer userId;
 
-
-   /* @OneToMany//(mappedBy = "GetUserBlog")
-    private List<GetUserBlog> blogList;*/
-
-   @OneToMany(mappedBy = "user")
-   private List<GetUserBlog> getUserBlog=new ArrayList<>();
-
-
-
+    @OneToMany(mappedBy = "user")
+    private List<GetUserBlog> getUserBlog=new ArrayList<>();
     private String userName;
+
     @Column(nullable = true,unique = true)
     private String email;
+
     @Column(nullable = true,unique = true)
     private String phoneNumber;
+
     private String uuid;
 
-    public User()
-    {}
+    public User() {}
 
-    public User(UserCo userCo) {
+    public User(UserCo userCo){
 
         this.userName=userCo.getUserName();
         this.email=userCo.getEmail();

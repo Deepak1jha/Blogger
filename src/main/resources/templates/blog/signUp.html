@@ -16,7 +16,7 @@
     <div class="container">
 
         <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
-            <a class="navbar-brand" >Blogger</a>
+            <a class="navbar-brand" href="http://127.0.0.1:9020" >Home</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
@@ -30,62 +30,46 @@
             </div>
         </nav>
 
-<!--<form th:action="@{userData/create}" class="text-center border border-light p-5 " method="post">-->
+
         <form th:action="@{/userData/create}" class="text-center border border-light p-5 " method="post">
-    <div class="form-group col-sm-12">
-        <!-- <label for="exampleInputEmail1">Email address</label>-->
-        <h3>
-            <h1>Add Your <span class="badge badge-info"> Detail</span></h1>
-
-        </h3>
-    </div>
-
+                <div class="form-group col-sm-12">
+                    <!-- <label for="exampleInputEmail1">Email address</label>-->
+                    <h3>
+                        <h1>Add Your <span class="badge badge-info"> Detail</span></h1>
+                    </h3>
+                </div>
 
 
-   <!-- <div class="form-group col-sm-12">
-        <h5>Enter Your Email </h5>
-        <input type="email" class="form-group col-sm-7"  id="email" name="email" placeholder="Email">
-    </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Email</span>
+                    </div>
+                    <input type="email" class="form-control" placeholder="Enter Your Email" id="email" name="email"  aria-describedby="basic-addon1" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please Provide !</div>
+                </div>
 
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon2">Name</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Enter Your Name" id="userName" name="userName"  aria-describedby="basic-addon2" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please Provide !</div>
+                </div>
 
-    <div class="form-group col-sm-12">
-        <h5>Enter Your Name </h5>
-        <input type="text" class="form-group col-sm-7" id="userName" name="userName" placeholder="Name">
-    </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon3">Phone Number</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Enter Your Phone Number" id="phoneNumber" name="phoneNumber" aria-label="Username" aria-describedby="basic-addon3" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please Provide !</div>
+                </div>
 
-    <div class="form-group col-sm-12">
-        <h5>Phone Number</h5>
-        <input type="text" class="form-group col-sm-7" id="phoneNumber" name="phoneNumber" placeholder="Phone Number">
-    </div>-->
+                <button type="submit" class="btn btn-primary " >Add</button>
 
-
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Email</span>
-        </div>
-        <input type="email" class="form-control" placeholder="Enter Your Email" id="email" name="email"  aria-describedby="basic-addon1">
-    </div>
-
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon2">Name</span>
-        </div>
-        <input type="text" class="form-control" placeholder="Enter Your Name" id="userName" name="userName"  aria-describedby="basic-addon2">
-    </div>
-
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon3">Phone Number</span>
-        </div>
-        <input type="text" class="form-control" placeholder="Enter Your Phone Number" id="phoneNumber" name="phoneNumber" aria-label="Username" aria-describedby="basic-addon3">
-    </div>
-
-
-
-
-    <button type="submit" class="btn btn-primary " >Add</button>
-
-</form>
+        </form>
     </div>
 
 
