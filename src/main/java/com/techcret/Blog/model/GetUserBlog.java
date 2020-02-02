@@ -1,14 +1,11 @@
 package com.techcret.Blog.model;
 
-
 import com.techcret.Blog.commandObject.GetUserBlogCo;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-//@Table(name ="blog")
 public class GetUserBlog {
 
     @Id
@@ -19,8 +16,7 @@ public class GetUserBlog {
     private String description;
     private String inputMessage;
     private String uuid;
-    //private String userTableId;
-    //private Integer userId;
+
 
 
     @JoinColumn(name = "user")
@@ -40,8 +36,6 @@ public class GetUserBlog {
         this.inputMessage = getUserBlogCo.getInputMessage();
         this.createdDateTime = LocalDateTime.now();
         this.uuid = UUID.randomUUID().toString();
-        // this.userTableId=getUserBlogCo.getUserTableId();
-        //this.userId=userinfo.getUserId();
         this.user = user;
 
     }

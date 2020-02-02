@@ -17,13 +17,17 @@ public class User {
     private List<GetUserBlog> getUserBlog=new ArrayList<>();
     private String userName;
 
-    @Column(nullable = true,unique = true)
+   // @Column(nullable = true,unique = true)
     private String email;
 
-    @Column(nullable = true,unique = true)
+   // @Column(nullable = true,unique = true)
     private String phoneNumber;
 
+    private String password;
+
     private String uuid;
+
+    private String userRole;
 
     public User() {}
 
@@ -33,6 +37,8 @@ public class User {
         this.email=userCo.getEmail();
         this.phoneNumber=userCo.getPhoneNumber();
         uuid= UUID.randomUUID().toString();
+        this.password=userCo.getPassword();
+        this.userRole=userCo.getUserRole();
     }
 
 
@@ -83,6 +89,22 @@ public class User {
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
     }
 
     @Override

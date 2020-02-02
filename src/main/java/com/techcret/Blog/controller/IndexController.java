@@ -8,6 +8,8 @@ import com.techcret.Blog.commandObject.IndexCo;
 import com.techcret.Blog.model.GetUserBlog;
 import com.techcret.Blog.model.User;
 import com.techcret.Blog.valueObject.GetUserBlogVO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -26,6 +28,8 @@ import java.util.Optional;
 @RequestMapping(value = "/")
 
 public class IndexController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
 
     private final UserRepository userRepository;
     private final GetUserBlogRepository getUserBlogRepository;
