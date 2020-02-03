@@ -5,6 +5,7 @@ import com.techcret.Blog.commandObject.UserCo;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -16,6 +17,20 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<GetUserBlog> getUserBlog=new ArrayList<>();
     private String userName;
+
+
+//    @ManyToMany
+//    Set<Role> roleSet;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_role"
+           // joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            //inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
+            )
+    Set<Role> roleSet;
+
+
 
    // @Column(nullable = true,unique = true)
     private String email;

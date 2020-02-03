@@ -2,9 +2,6 @@ package com.techcret.Blog.commandObject;
 
 public class UserCo {
 
-
-
-
     private String userName;
     private String email;
     private String phoneNumber;
