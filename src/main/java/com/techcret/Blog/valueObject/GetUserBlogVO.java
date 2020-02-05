@@ -1,10 +1,13 @@
 package com.techcret.Blog.valueObject;
 
 import com.techcret.Blog.model.GetUserBlog;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 
 public class GetUserBlogVO {
+    private final Logger LOG = LoggerFactory.getLogger(GetUserBlogVO.class);
 
 
     private LocalDateTime createdDateTime;
@@ -13,15 +16,15 @@ public class GetUserBlogVO {
     private String inputMessage;
 
 
-    public  GetUserBlogVO()
-    {}
+    public GetUserBlogVO() {
+    }
 
     public GetUserBlogVO(GetUserBlog getUserBlog) {
 
-        this.createdDateTime=getUserBlog.getCreatedDateTime();
-        this.title=getUserBlog.getTitle();
-        this.description=getUserBlog.getDescription();
-        this.inputMessage=getUserBlog.getInputMessage();
+        this.createdDateTime = getUserBlog.getCreatedDateTime();
+        this.title = getUserBlog.getTitle();
+        this.description = getUserBlog.getDescription();
+        this.inputMessage = getUserBlog.getInputMessage();
 
     }
 

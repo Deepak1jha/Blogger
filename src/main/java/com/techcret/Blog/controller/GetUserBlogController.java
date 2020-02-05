@@ -13,16 +13,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping(value = "getBlog")
 public class GetUserBlogController {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(GetUserBlogController.class);
-
-
-
-
 
 
     private final GetUserBlogRepository getUserBlogRepository;
@@ -37,32 +34,25 @@ public class GetUserBlogController {
     }
 
     @GetMapping(value = "create")
-    public String create()
-    {
-        return "/blog/GetUserBlogForm";
+    public String create() {
+        return "/blog/UserPost/GetUserBlogForm";
     }
-
-
 
 
     @PostMapping(value = "create")
-    public String save(GetUserBlogCo getUserBlogCo)
-
-    {
+    public String save(GetUserBlogCo getUserBlogCo) {
         String localStorage;
-        localStorage=getUserBlogCo.getUserTableId();
-        System.out.println(localStorage+"< --local storage value");
+        localStorage = getUserBlogCo.getUserTableId();
+        System.out.println(localStorage + "< --local storage value");
 
-        User user =userRepository.findUsersByEmail(localStorage);
-        GetUserBlog getUserBlog=new GetUserBlog(getUserBlogCo,user);
+        Optional<User> user = userRepository.findUsersByEmail(localStorage);
+        GetUserBlog getUserBlog = new GetUserBlog(getUserBlogCo, user.get());
         getUserBlogRepository.save(getUserBlog);
 
-        return "/blog/index";
+        return "/blog/Index/index";
 
 
     }
-
-
 
 
 }

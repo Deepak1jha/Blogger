@@ -1,6 +1,15 @@
 package com.techcret.Blog.commandObject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 public class UserCo {
+
+    private final Logger LOG = LoggerFactory.getLogger(UserCo.class);
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     private String userName;
     private String email;

@@ -3,7 +3,6 @@ package com.techcret.Blog.controller;
 
 import com.techcret.Blog.Repository.GetUserBlogRepository;
 import com.techcret.Blog.Repository.UserRepository;
-import com.techcret.Blog.commandObject.GetUserBlogCo;
 import com.techcret.Blog.commandObject.IndexCo;
 import com.techcret.Blog.model.GetUserBlog;
 import com.techcret.Blog.model.User;
@@ -12,16 +11,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.support.RequestContextUtils;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -33,7 +27,7 @@ public class IndexController {
 
     private final UserRepository userRepository;
     private final GetUserBlogRepository getUserBlogRepository;
-    public Integer myUserId;
+    public Long myUserId;
 
 
     public IndexController(UserRepository userRepository, GetUserBlogRepository getUserBlogRepository) {
@@ -42,28 +36,30 @@ public class IndexController {
     }
 
 
-    @GetMapping(value = "")
-    public String create() {
-        return "/blog/index";
+    @GetMapping(value = "/login")
+    public String create(@RequestParam Optional<String> error) {
+        //return "/blog/index";
+        LOGGER.debug("Getting login page, error={}", error);
+
+        return "/blog/Auth/login";
 
     }
 
 
     @PostMapping(value = "create")
-    public String save(IndexCo indexCo, RedirectAttributes redirectAttributes)
-    {
+    public String save(IndexCo indexCo, RedirectAttributes redirectAttributes) {
         String email = indexCo.getEmail();
         boolean isUserExist = userRepository.existsByEmail(email);
 
 
         if (isUserExist) {
 
-            User user = userRepository.findUsersByEmail(email);
-            myUserId = user.getUserId();
+            User user = userRepository.findByEmail(email);
+            myUserId = user.getId();
             redirectAttributes.addAttribute("userId", user);
 
 
-         return "redirect:/displayUserBlogs";
+            return "redirect:/displayUserBlogs";
 
 
         } else {
@@ -78,7 +74,7 @@ public class IndexController {
 
         String notFound = "User Not Found";
         model.addAttribute("notFound", notFound);
-        return "/blog/displayUserBlogs";
+        return "/blog/DisplayUserData/displayUserBlogs";
 
 
     }
@@ -87,11 +83,11 @@ public class IndexController {
     @GetMapping(value = "displayUserBlogs")
     public String list1(Model model, @RequestParam String userId) throws NullPointerException {
 
-        int userUrlId = Integer.parseInt(userId);
-        User user=userRepository.findUsersByUserId(userUrlId);
+        long userUrlId = Long.parseLong(userId);
+        User user = userRepository.findUsersById(userUrlId);
 
         Iterable<GetUserBlog> iterable = user.getGetUserBlog();
-        List<GetUserBlog> getUserBlogList =user.getGetUserBlog();
+        List<GetUserBlog> getUserBlogList = user.getGetUserBlog();
         List<GetUserBlogVO> arrayList = new ArrayList<>();
 
         for (GetUserBlog getUserBlog : getUserBlogList) {
@@ -100,6 +96,6 @@ public class IndexController {
 
         model.addAttribute("arrayList", arrayList);
 
-        return "/blog/displayUserBlogs";
+        return "/blog/DisplayUserData/displayUserBlogs";
     }
 }

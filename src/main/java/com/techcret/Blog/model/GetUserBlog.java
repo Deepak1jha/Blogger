@@ -1,8 +1,10 @@
 package com.techcret.Blog.model;
 
 import com.techcret.Blog.commandObject.GetUserBlogCo;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.UUID;
 
 @Entity
@@ -18,14 +20,9 @@ public class GetUserBlog {
     private String uuid;
 
 
-
     @JoinColumn(name = "user")
     @ManyToOne
     private User user;
-
-
-    public GetUserBlog() {
-    }
 
 
     public GetUserBlog(GetUserBlogCo getUserBlogCo, User user) {

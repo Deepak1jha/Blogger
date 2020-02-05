@@ -1,6 +1,11 @@
 package com.techcret.Blog.commandObject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class GetUserBlogCo {
+
+    private final Logger LOG = LoggerFactory.getLogger(GetUserBlogCo.class);
     private String title;
     private String description;
     private String inputMessage;
